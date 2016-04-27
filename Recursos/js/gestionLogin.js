@@ -17,6 +17,7 @@ $(document).on('pagebeforecreate', '#indexPage', function () {
             url: "Controlador/gestionLoguin.php",
             data: {usu: usuario, pass: password},
             success: function (data) {
+                //alert(data);
                 var aux = JSON.parse(data);
 
                 $.mobile.loading('hide');
