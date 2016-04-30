@@ -5,6 +5,7 @@ $(document).bind("mobileinit", function () {
 
 
 function verificarSesion() {
+    //alert(getCookie('username'));
     if (getCookie('username') === "") {
         abrirPagina('indexPage', 'flip');
     } else {
@@ -13,15 +14,21 @@ function verificarSesion() {
 }
 
 
-function abrirPagina(pagina, efecto) {       
+function abrirPagina(pagina, efecto) {
     $.mobile.pageContainer.pagecontainer('change', '#' + pagina, {
         transition: efecto,
         changeHash: true, //Lo abre en el mismo index o abre una nueva URL
         reverse: false,
         allowSamePageTransition: true,
         showLoadMsg: true,
-        reload: ((pagina === "indexPage") ? true : false)
+        reload: false
     });
+    
+    /*Si la pagina es el index (cerro sesion), recarga para que se refresquen
+     * las cookies*/
+    if(pagina === "indexPage"){
+        location.reload();
+    }
 }
 
 
@@ -60,6 +67,6 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 
-function destroyCookie() {    
+function destroyCookie() {
     document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
