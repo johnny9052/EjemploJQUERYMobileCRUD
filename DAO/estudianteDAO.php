@@ -13,7 +13,7 @@ class estudianteDAO{
 
     public function guardar(clsEstudiante $obj) {
         $sql = "INSERT INTO estudiante(codigo,nombre,apellido,cedula,edad,semestre) VALUES ('" . $obj->getCodigo() . "','" . $obj->getNombre() . "','" . $obj->getApellido() . "','" . $obj->getCedula() . "','" . $obj->getEdad() . "','" . $obj->getSemestre() . "')";
-        $resultado = $this->objCon->Ejecutar($sql);
+        $resultado = $this->objCon->Ejecutar($sql);       
         $this->objCon->respuesta($resultado);
     }
 
